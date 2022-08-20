@@ -31,11 +31,12 @@ class YellowQrcode {
                     "begin:vevent\n"=>"Event",
                     "geo:"=>"Geo",
                     "tel:"=>"Call",
-                    "smsto:"=>"Sms",
-                    "wifi:"=>"Wifi",
+                    "SMSTO:"=>"Sms",
+                    "WIFI:"=>"Wifi",
                 ];
                 foreach ($qrTypes as $qrType=>$value) {
-                    if (preg_match('@^'.$qrType.'@i', $content)) {
+                    $modifier = preg_match('/[a-z]/', $qrType) ? "i" : "";
+                    if (preg_match('@^'.$qrType.'@'.$modifier, $content)) {
                         $label = $this->yellow->language->getTextHtml("qrcodeLabel".$value);
                         break;
                     }
@@ -61,10 +62,10 @@ class YellowQrcode {
                 if (preg_match('@^(fn|summary):(.+)@mi', $content, $matches)) {
                     $shortLink = $matches[2];
                 }
-            } elseif (preg_match('@^SMSTO:(.+?):(.+)$@i', $content, $matches)) {
+            } elseif (preg_match('@^SMSTO:(.+?):(.+)$@', $content, $matches)) {
                 $shortLink = $matches[1];
                 $link = $matches[2];
-            } elseif (preg_match('@^WIFI:T:.+?;S:(.+?);P:(.+?);@i', $content, $matches)) {
+            } elseif (preg_match('@^WIFI:T:.+?;S:(.+?);P:(.+?);@', $content, $matches)) {
                 // TODO: colon and semicolon can be escaped
                 $shortLink = $matches[1];
                 $link = $matches[2];
