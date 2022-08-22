@@ -20,55 +20,71 @@ class YellowQrcode {
         $output = null;
         if ($name=="qrcode" && ($type=="block")) {
             list($content, $label, $style, $size) = $this->yellow->toolbox->getTextArguments($text);
-            $content = stripcslashes($content);
-            $content = preg_replace('/\R/', "\n", $content);
-            if (empty($label)) {
-                $qrTypes = [
-                    "https://"=>"Url",
-                    "http://"=>"Url",
-                    "mailto:"=>"Email",
-                    "begin:vcard\n"=>"Card",
-                    "begin:vevent\n"=>"Event",
-                    "geo:"=>"Geo",
-                    "tel:"=>"Call",
-                    "SMSTO:"=>"Sms",
-                    "WIFI:"=>"Wifi",
-                ];
-                foreach ($qrTypes as $qrType=>$value) {
-                    $modifier = preg_match('/[a-z]/', $qrType) ? "i" : "";
-                    if (preg_match('@^'.$qrType.'@'.$modifier, $content)) {
-                        $label = $this->yellow->language->getTextHtml("qrcodeLabel".$value);
-                        break;
-                    }
-                }
+            if (!strlen($content)) {
+                $kind = "url";
+                $parts = [ $this->yellow->page->getUrl() ];
+            } elseif ($content[0]=="#") {
+                $parts = $this->yellow->toolbox->getTextList($content, "|", 5);
+                $kind = substr(array_shift($parts), 1);
+            } else {
+                $kind = "url";
+                $parts = [ $content ];
             }
-            $link = $shortLink = null;
+            if (empty($label)) $label = $this->yellow->language->getTextHtml("qrcodeLabel".ucfirst($kind));
             $color = $this->yellow->system->get("qrcodeColor");
             $background = $this->yellow->system->get("qrcodeBackground");
             $fileName = $this->yellow->system->get("qrcodeCache").md5(rawurlencode($content)."@".$color."@".$background);
             $location = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreMediaLocation").$fileName;
             $path = $this->yellow->lookup->findMediaDirectory("coreMediaLocation").$fileName;
-            if (preg_match('@^(http://|https://|mailto:|geo:|tel:)(.+)@i', $content, $matches)) {
-                $link = $content;
+            if ($kind=="url" || $kind=="geo" || $kind=="call") {
+                if ($kind=="geo") {
+                    $link = "geo:".$parts[0];
+                } elseif ($kind=="call") {
+                    $link = "tel:".$parts[0];
+                } else {
+                    $link = $parts[0];
+                }
+                $content = $link;
+                $address = preg_replace('@^https?://@', "", $parts[0]);
                 $maxLength = $this->yellow->system->get("qrcodeShortLinkLength");
-                $shortLink = mb_strlen($matches[2])<=$maxLength ? $matches[2] : mb_substr($matches[2], 0, $maxLength-1)."…";
-            } elseif (preg_match('@^begin:(vcard|vevent)$@mi', $content, $matches)) {
-                $contentExtension = strtolower($matches[1])=="vcard" ? "vcf" : "ical";
-                $content = preg_replace('/\R/', "\r\n", $content)."\r\n";
+                $shortLink = mb_strlen($address )<=$maxLength ? $address  : mb_substr($address , 0, $maxLength-1)."…";
+            } elseif ($kind=="card" || $kind=="event") {
+                if ($kind=="card") {
+                    $contentExtension = "vcf";
+                    $content = "BEGIN:VCARD\r\n";
+                    foreach ([ "N", "TEL", "EMAIL", "ADR" ] as $i=>$tag) {
+                        if (!empty($parts[$i])) $content .= $tag.":".str_replace(['\\', ','], ['\\\\', '\,'], trim($parts[$i]))."\r\n";
+                    }
+                    $content .= "END:VCARD\r\n";
+                    $nameParts = explode(";", $parts[0], 2);
+                    if (count($nameParts)==2) {
+                        $shortLink = trim($nameParts[1])." ".trim($nameParts[0]);
+                    } else {
+                        $shortLink = trim($nameParts[0]);
+                    }
+                } else {
+                    $contentExtension = "ical";
+                    $content = "BEGIN:VEVENT\r\n";
+                    foreach ([ "SUMMARY", "LOCATION", "DTSTART", "DTEND" ] as $i=>$tag) {
+                        if (!empty($parts[$i])) $content .= $tag.":".str_replace(['\\', ','], ['\\\\', '\,'], trim($parts[$i]))."\r\n";
+                    }
+                    $content .= "END:VEVENT\r\n";
+                    $shortLink = $parts[0];
+                }
                 if (!file_exists($path.".".$contentExtension)) {
                     $this->yellow->toolbox->createFile($path.".".$contentExtension, $content, true);
                 }
                 $link = $location.".".$contentExtension;
-                if (preg_match('@^(fn|summary):(.+)@mi', $content, $matches)) {
-                    $shortLink = $matches[2];
-                }
-            } elseif (preg_match('@^SMSTO:(.+?):(.+)$@', $content, $matches)) {
-                $shortLink = $matches[1];
-                $link = $matches[2];
-            } elseif (preg_match('@^WIFI:T:.+?;S:(.+?);P:(.+?);@', $content, $matches)) {
-                // TODO: colon and semicolon can be escaped
-                $shortLink = $matches[1];
-                $link = $matches[2];
+            } elseif ($kind=="sms") {
+                $link = $parts[1];
+                $shortLink = $parts[0];
+                $parts = array_map(function($p) { return str_replace(['\\', ':', ';' ], ['\\\\', '\:', '\;' ], $p); }, $parts);
+                $content = "SMSTO:".$parts[0].":".$parts[1];
+            } elseif ($kind=="wifi") {
+                $link = $parts[2];
+                $shortLink = $parts[0];
+                $parts = array_map(function($p) { return str_replace(['\\', ':', ';' ], ['\\\\', '\:', '\;' ], $p); }, $parts);
+                $content = "WIFI:T:".$parts[1].";S:".$parts[0].";P:".$parts[2].";;";
             }
             $formattedLabel = $label;
             if (preg_match('@^(.*)\[(.+)\](.*)$@', $formattedLabel, $matches)) {

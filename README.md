@@ -8,12 +8,23 @@ QR codes.
 
 Create a `[qrcode]` shortcut, alone in a paragraph.
 
-The following arguments are available, all but the first argument are optional:
+The following arguments are available, all are optional:
  
-`Content` = content of the QR code, wrap into quotes if there are spaces  
+`Content` = content of the QR code, wrap multiple words into quotes; if omitted, the address of the current page is used  
 `Label` = label of the QR code, wrap multiple words into quotes  
 `Style` = style, e.g. `left`, `center`, `right`  
 `Size` = QR code width and height in pixel  
+
+`Content`, other than just a URL, can be a structured field in order to specify geographic locations, phone calls, email messages, SMS messages, vCards, iCal events, WiFi passwords:
+
+        #url|http://address
+	#geo|longitude,latitude
+	#call|telephone-number
+	#email|to|subject|body
+	#sms|to|text
+	#card|surname;name|telephone-number|email|;;street-address;locality;region;postal-code;country
+	#event|summary|location|start-time|end-time
+	#wifi|ssid|security|password
 
 ## Examples
 
@@ -33,17 +44,16 @@ Adding a QR code, different sizes:
     [qrcode https://datenstrom.se/yellow/ - right 100]
     [qrcode https://datenstrom.se/yellow/ - right 200]
 
-QR codes can also be used for geographic locations, phone calls, email messages, SMS messages, vCards, iCal events, WiFi identifiers and passwords:
+Adding different kinds of QR codes:
 
-    [qrcode geo:41.85181,12.62127]
-    [qrcode tel:+39-06-12345678]
-    [qrcode "mailto:smith@example.com?subject=Request of help"]
-    [qrcode "SMSTO:+39-06-12345678:Hello there!"]
-    [qrcode "BEGIN:VCARD\nFN:John Smith\nEMAIL:smith@example.com\nEND:VCARD"]
-    [qrcode "BEGIN:VEVENT\nSUMMARY:Yellow Fest\nDTSTART:20220818T220000Z\nDTEND:20220819T220000Z\nEND:VEVENT"]
-    [qrcode WIFI:T:WPA;S:MyWifi;P:w65s9s67kshqw;;]
-
-However, not all QR scanners will properly interpret all these types.
+    [qrcode #url|https://datenstrom.se/yellow/]
+    [qrcode #geo|41.85181,12.62127]
+    [qrcode #call|+39-06-12345678]
+    [qrcode #email|smith@example.com|Request of help"]
+    [qrcode "#sms|+39-06-12345678|Hello there!"]
+    [qrcode "#card|Rossi;Giuseppe|+39061234567|rossi@example.com|;;Piazza di Spagna 10;Roma;RM;00187;Italia"]
+    [qrcode "#event|Yellow Fest|Lund|20220818T220000Z|20220819T220000Z"]
+    [qrcode #wifi|MyWifi|WPA|w65s9s67kshqw]
 
 ## Settings
 
@@ -59,7 +69,7 @@ The following settings can be configured in file `system/extensions/yellow-syste
 
 [Download extension](https://github.com/GiovanniSalmeri/yellow-qrcode/archive/master.zip) and copy zip file into your `system/extensions` folder. Right click if you use Safari.
 
-This extension uses [QR Code Generator](https://goqr.me/api/). The service provider [does not store or log QR code contents](https://goqr.me/privacy-safety-security/). "QR Code" is a trademark of Denso Wave Incorporated.
+This extension uses [QR Code Generator](https://goqr.me). The service provider [does not store or log QR code contents](https://goqr.me/privacy-safety-security/).
 
 ## Developer
 

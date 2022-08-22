@@ -8,7 +8,7 @@ QrcodeLabelCall: Chiama il [@shortlink]
 QrcodeLabelGeo: Visita [@shortlink]
 QrcodeLabelEvent: Aggiungi al calendario [@shortlink]
 QrcodeLabelEmail: Manda una email a [@shortlink]
-QrcodeLabelWifi: Collegati a @shortlink (parola d'ordine: @link)
+QrcodeLabelWifi: Collegati a @shortlink (password: @link)
 
 Language: de
 QrcodeLabelUrl: Besuch [@shortlink]
