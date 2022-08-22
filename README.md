@@ -17,14 +17,14 @@ The following arguments are available, all are optional:
 
 `Content`, other than just a URL, can be a structured field in order to specify geographic locations, phone calls, email messages, SMS messages, vCards, iCal events, WiFi passwords:
 
-        #url|http://address
-	#geo|longitude,latitude
-	#call|telephone-number
-	#email|to|subject|body
-	#sms|to|text
-	#card|surname;name|telephone-number|email|;;street-address;locality;region;postal-code;country
-	#event|summary|location|start-time|end-time
-	#wifi|ssid|security|password
+    #url|http://address
+    #geo|longitude,latitude
+    #call|telephone-number
+    #email|to|subject|body
+    #sms|to|text
+    #card|surname;name|telephone-number|email|;;street-address;locality;region;postal-code;country
+    #event|summary|location|start-time|end-time
+    #wifi|ssid|security|password
 
 ## Examples
 
