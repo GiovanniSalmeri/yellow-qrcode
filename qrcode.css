@@ -1,24 +1,40 @@
-/* # Qrcode extension, https://github.com/GiovanniSalmeri/yellow-qrcode */
+/* Qrcode extension, https://github.com/GiovanniSalmeri/yellow-qrcode */
 
 figure.qrcode {
     display: inline-block;
     margin: 5px 0;
-    padding: 10px;
+    padding: 10px 5px;
     background: #f0f0f0;
     text-align: center;
+    vertical-align: top;
     border-radius: 4px;
     box-sizing: border-box;
 }
 figure.qrcode figcaption {
-    font-weight: bold;
+    font-size: 0.9em;
 }
 
-/* Hide the QR code and leave only its label when seen in a smartphone */
-
-@media screen and (max-width: 640px) {
+/* Responsiveness */
+@media screen and (max-width: 1500px) {
     figure.qrcode {
-        width: 100%;
-    }
+        width: calc(20% - 0.25em);
+    }    
+}
+@media screen and (max-width: 1200px) {
+    figure.qrcode {
+        width: calc(25% - 0.25em);
+    }    
+}
+@media screen and (max-width: 900px) {
+    figure.qrcode {
+        width: calc(33% - 0.25em);
+    }    
+}
+@media screen and (max-width: 600px) {
+    figure.qrcode {
+        width: calc(50% - 0.25em);
+    }    
+    /* QR code is hidden when on a smartphone */
     figure.qrcode img {
         display: none;
     }
