@@ -85,6 +85,16 @@ class YellowQrcode {
                 $shortLink = $parts[0];
                 $parts = array_map(function($p) { return str_replace([ '\\', ':', ';' ], [ '\\\\', '\:', '\;' ], $p); }, $parts);
                 $content = "WIFI:T:".$parts[1].";S:".$parts[0].";P:".$parts[2].";;";
+            } elseif ($kind=="email") {
+                $shortLink = $parts[0];
+                $content = "mailto:".rawurlencode($parts[0]);
+                if ($parts[1]) {
+                    $content .= "?subject=".rawurlencode($parts[1]);
+                    if ($parts[2]) {
+                        $content .= "&body=".rawurlencode($parts[2]);
+                    }
+                }
+                $link = $content;
             } else {
                 $link = $shortLink = null;
             }
