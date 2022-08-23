@@ -56,8 +56,8 @@ class YellowQrcode {
                         if (!empty($parts[$i])) $content .= $tag.":".str_replace([ '\\', ',' ], [ '\\\\', '\,' ], trim($parts[$i]))."\r\n";
                     }
                     $content .= "END:VCARD\r\n";
-                    $nameParts = explode(";", $parts[0], 2);
-                    if (count($nameParts)==2) {
+                    $nameParts = explode(";", $parts[0]);
+                    if (count($nameParts)>=2) {
                         $shortLink = trim($nameParts[1])." ".trim($nameParts[0]);
                     } else {
                         $shortLink = trim($nameParts[0]);
