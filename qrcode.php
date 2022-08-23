@@ -85,6 +85,8 @@ class YellowQrcode {
                 $shortLink = $parts[0];
                 $parts = array_map(function($p) { return str_replace([ '\\', ':', ';' ], [ '\\\\', '\:', '\;' ], $p); }, $parts);
                 $content = "WIFI:T:".$parts[1].";S:".$parts[0].";P:".$parts[2].";;";
+            } else {
+                $link = $shortLink = null;
             }
             $formattedLabel = $label;
             if (preg_match('@^(.*)\[(.+)\](.*)$@', $formattedLabel, $matches)) {
