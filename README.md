@@ -49,7 +49,7 @@ Adding different kinds of QR codes:
     [qrcode #url|https://datenstrom.se/yellow/]
     [qrcode #geo|41.85181,12.62127]
     [qrcode #call|+39-06-12345678]
-    [qrcode #email|smith@example.com|Request of help"]
+    [qrcode "#email|smith@example.com|Request of help"]
     [qrcode "#sms|+39-06-12345678|Hello there!"]
     [qrcode "#card|Rossi;Giuseppe|+39061234567|rossi@example.com|;;Piazza di Spagna 10;Roma;RM;00187;Italia"]
     [qrcode "#event|Yellow Fest|Lund|20220818T220000Z|20220819T220000Z"]
