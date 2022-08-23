@@ -10,7 +10,7 @@ Create a `[qrcode]` shortcut, alone in a paragraph.
 
 The following arguments are available, all are optional:
  
-`Content` = content of the QR code, wrap multiple words into quotes; if omitted, the address of the current page is used  
+`Content` = content of the QR code, wrap into quotes if there are spaces; if omitted, the address of the current page is used  
 `Label` = label of the QR code, wrap multiple words into quotes  
 `Style` = style, e.g. `left`, `center`, `right`  
 `Size` = QR code width and height in pixel  
