@@ -93,7 +93,7 @@ class YellowQrcode {
             $formattedLabel = str_replace([ "@shortlink", "@link" ], [ htmlspecialchars($shortLink), htmlspecialchars($link) ], $formattedLabel);
             if (empty($size)) $size = $this->yellow->system->get("qrcodeSize");
             if (!file_exists($path.".png")) {
-                $qrcodeImage = file_get_contents("http://api.qrserver.com/v1/create-qr-code/?color=".rawurlencode($color)."&bgcolor=".rawurlencode($background)."&data=".rawurlencode($content)."&qzone=2&margin=0&size=500x500&ecc=L&format=png");
+                $qrcodeImage = file_get_contents("https://api.qrserver.com/v1/create-qr-code/?color=".rawurlencode($color)."&bgcolor=".rawurlencode($background)."&data=".rawurlencode($content)."&qzone=2&margin=0&size=500x500&ecc=L&format=png");
                 if (substr($qrcodeImage, 0, 8)=="\211PNG\r\n\032\n") $this->yellow->toolbox->createFile($path.".png", $qrcodeImage, true);
             }
             $output .= "<figure class=\"qrcode";
