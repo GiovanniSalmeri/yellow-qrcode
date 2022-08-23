@@ -18,7 +18,7 @@ class YellowQrcode {
     // Handle page content of shortcut
     public function onParseContentShortcut($page, $name, $text, $type) {
         $output = null;
-        if ($name=="qrcode" && ($type=="block")) {
+        if ($name=="qrcode" && $type=="block") {
             list($content, $label, $style, $size) = $this->yellow->toolbox->getTextArguments($text);
             if (!strlen($content)) {
                 $kind = "url";
@@ -47,13 +47,13 @@ class YellowQrcode {
                 $content = $link;
                 $address = preg_replace('@^https?://@', "", $parts[0]);
                 $maxLength = $this->yellow->system->get("qrcodeShortLinkLength");
-                $shortLink = mb_strlen($address )<=$maxLength ? $address  : mb_substr($address , 0, $maxLength-1)."…";
+                $shortLink = mb_strlen($address )<=$maxLength ? $address  : mb_substr($address, 0, $maxLength-1)."…";
             } elseif ($kind=="card" || $kind=="event") {
                 if ($kind=="card") {
                     $contentExtension = "vcf";
                     $content = "BEGIN:VCARD\r\n";
                     foreach ([ "N", "TEL", "EMAIL", "ADR" ] as $i=>$tag) {
-                        if (!empty($parts[$i])) $content .= $tag.":".str_replace(['\\', ','], ['\\\\', '\,'], trim($parts[$i]))."\r\n";
+                        if (!empty($parts[$i])) $content .= $tag.":".str_replace([ '\\', ',' ], [ '\\\\', '\,' ], trim($parts[$i]))."\r\n";
                     }
                     $content .= "END:VCARD\r\n";
                     $nameParts = explode(";", $parts[0], 2);
@@ -66,7 +66,7 @@ class YellowQrcode {
                     $contentExtension = "ical";
                     $content = "BEGIN:VEVENT\r\n";
                     foreach ([ "SUMMARY", "LOCATION", "DTSTART", "DTEND" ] as $i=>$tag) {
-                        if (!empty($parts[$i])) $content .= $tag.":".str_replace(['\\', ','], ['\\\\', '\,'], trim($parts[$i]))."\r\n";
+                        if (!empty($parts[$i])) $content .= $tag.":".str_replace([ '\\', ',' ], [ '\\\\', '\,' ], trim($parts[$i]))."\r\n";
                     }
                     $content .= "END:VEVENT\r\n";
                     $shortLink = $parts[0];
@@ -78,12 +78,12 @@ class YellowQrcode {
             } elseif ($kind=="sms") {
                 $link = $parts[1];
                 $shortLink = $parts[0];
-                $parts = array_map(function($p) { return str_replace(['\\', ':', ';' ], ['\\\\', '\:', '\;' ], $p); }, $parts);
+                $parts = array_map(function($p) { return str_replace([ '\\', ':', ';' ], [ '\\\\', '\:', '\;' ], $p); }, $parts);
                 $content = "SMSTO:".$parts[0].":".$parts[1];
             } elseif ($kind=="wifi") {
                 $link = $parts[2];
                 $shortLink = $parts[0];
-                $parts = array_map(function($p) { return str_replace(['\\', ':', ';' ], ['\\\\', '\:', '\;' ], $p); }, $parts);
+                $parts = array_map(function($p) { return str_replace([ '\\', ':', ';' ], [ '\\\\', '\:', '\;' ], $p); }, $parts);
                 $content = "WIFI:T:".$parts[1].";S:".$parts[0].";P:".$parts[2].";;";
             }
             $formattedLabel = $label;
