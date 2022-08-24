@@ -1,71 +1,71 @@
 # Qrcode extension, https://github.com/GiovanniSalmeri/yellow-qrcode
 
 Language: it
-QrcodeLabelUrl: Visita |@shortlink|
-QrcodeLabelCard: Aggiungi alla rubrica |@shortlink|
-QrcodeLabelSms: Scrivi a @shortlink «@link»
-QrcodeLabelCall: Chiama il |@shortlink|
-QrcodeLabelGeo: Visita |@shortlink|
-QrcodeLabelEvent: Aggiungi al calendario |@shortlink|
-QrcodeLabelEmail: Manda una email a |@shortlink|
-QrcodeLabelWifi: Collegati a @shortlink (password: @link)
+QrcodeLabelUrl: Visita |@text|
+QrcodeLabelCard: Aggiungi alla rubrica |@text|
+QrcodeLabelSms: Scrivi a @text «@link»
+QrcodeLabelCall: Chiama il |@text|
+QrcodeLabelGeo: Visita |@text|
+QrcodeLabelEvent: Aggiungi al calendario |@text|
+QrcodeLabelEmail: Manda una email a |@text|
+QrcodeLabelWifi: Collegati a @text (password: @link)
 
 Language: de
-QrcodeLabelUrl: Besuch |@shortlink|
-QrcodeLabelCard: Füge zu Kontakten |@shortlink| hinzu 
-QrcodeLabelSms: Sende die SMS »@link« an @shortlink
-QrcodeLabelCall: Ruf |@shortlink| an
-QrcodeLabelGeo: Besuch |@shortlink|
-QrcodeLabelEvent: Füge zum Kalender |@shortlink| hinzu
-QrcodeLabelEmail: Sende eine E-Mail an |@shortlink|
-QrcodeLabelWifi: Verbinde mit @shortlink (Passwort: @link)
+QrcodeLabelUrl: Besuch |@text|
+QrcodeLabelCard: Füge zu Kontakten |@text| hinzu 
+QrcodeLabelSms: Sende die SMS »@link« an @text
+QrcodeLabelCall: Ruf |@text| an
+QrcodeLabelGeo: Besuch |@text|
+QrcodeLabelEvent: Füge zum Kalender |@text| hinzu
+QrcodeLabelEmail: Sende eine E-Mail an |@text|
+QrcodeLabelWifi: Verbinde mit @text (Passwort: @link)
 
 Language: en
-QrcodeLabelUrl: Visit |@shortlink|
-QrcodeLabelCard: Add to contacts |@shortlink|
-QrcodeLabelSms: Message @shortlink ‘@link’
-QrcodeLabelCall: Call |@shortlink|
-QrcodeLabelGeo: Visit |@shortlink|
-QrcodeLabelEvent: Add to calendar |@shortlink|
-QrcodeLabelEmail: Email |@shortlink|
-QrcodeLabelWifi: Connect to @shortlink (password: @link)
+QrcodeLabelUrl: Visit |@text|
+QrcodeLabelCard: Add to contacts |@text|
+QrcodeLabelSms: Message @text ‘@link’
+QrcodeLabelCall: Call |@text|
+QrcodeLabelGeo: Visit |@text|
+QrcodeLabelEvent: Add to calendar |@text|
+QrcodeLabelEmail: Email |@text|
+QrcodeLabelWifi: Connect to @text (password: @link)
 
 Language: es
-QrcodeLabelUrl: Visitar |@shortlink|
-QrcodeLabelCard: Añadir a los contactos |@shortlink|
-QrcodeLabelSms: Enviar a @shortlink “@link”
-QrcodeLabelCall: Llamar al |@shortlink|
-QrcodeLabelGeo: Visitar |@shortlink|
-QrcodeLabelEvent: Añadir al calendario |@shortlink|
-QrcodeLabelEmail: Escribir a |@shortlink|
-QrcodeLabelWifi: Conectarse a @shortlink (contraseña: @link)
+QrcodeLabelUrl: Visitar |@text|
+QrcodeLabelCard: Añadir a los contactos |@text|
+QrcodeLabelSms: Enviar a @text “@link”
+QrcodeLabelCall: Llamar al |@text|
+QrcodeLabelGeo: Visitar |@text|
+QrcodeLabelEvent: Añadir al calendario |@text|
+QrcodeLabelEmail: Escribir a |@text|
+QrcodeLabelWifi: Conectarse a @text (contraseña: @link)
 
 Language: fr
-QrcodeLabelUrl: Visitez |@shortlink|
-QrcodeLabelCard: Ajoutez aux contacts |@shortlink|
-QrcodeLabelSms: Envoyez a @shortlink le SMS « @link »
-QrcodeLabelCall: Appelez le |@shortlink|
-QrcodeLabelGeo: Visitez |@shortlink|
-QrcodeLabelEvent: Ajoutez au calendrier |@shortlink|
-QrcodeLabelEmail: Envoyez un courriel a |@shortlink|
-QrcodeLabelWifi: Connectez-vous à @shortlink (mot de passe: @link)
+QrcodeLabelUrl: Visitez |@text|
+QrcodeLabelCard: Ajoutez aux contacts |@text|
+QrcodeLabelSms: Envoyez a @text le SMS « @link »
+QrcodeLabelCall: Appelez le |@text|
+QrcodeLabelGeo: Visitez |@text|
+QrcodeLabelEvent: Ajoutez au calendrier |@text|
+QrcodeLabelEmail: Envoyez un courriel a |@text|
+QrcodeLabelWifi: Connectez-vous à @text (mot de passe: @link)
 
 Language: nl
-QrcodeLabelUrl: Bezoek |@shortlink|
-QrcodeLabelCard: Voeg toe aan contacten |@shortlink|
-QrcodeLabelSms: Stuur @shortlink de SMS „@link”
-QrcodeLabelCall: Bel |@shortlink|
-QrcodeLabelGeo: Bezoek |@shortlink|
-QrcodeLabelEvent: Voeg toe aan kalender |@shortlink|
-QrcodeLabelEmail: Stuur |@shortlink| een email
-QrcodeLabelWifi: Maak verbinding met @shortlink (wachtwoord: @link)
+QrcodeLabelUrl: Bezoek |@text|
+QrcodeLabelCard: Voeg toe aan contacten |@text|
+QrcodeLabelSms: Stuur @text de SMS „@link”
+QrcodeLabelCall: Bel |@text|
+QrcodeLabelGeo: Bezoek |@text|
+QrcodeLabelEvent: Voeg toe aan kalender |@text|
+QrcodeLabelEmail: Stuur |@text| een email
+QrcodeLabelWifi: Maak verbinding met @text (wachtwoord: @link)
 
 Language: pt
-QrcodeLabelUrl: Visite |@shortlink|
-QrcodeLabelCard: Acrescente aos contatos |@shortlink|
-QrcodeLabelSms: Envie a @shortlink uma mensagem “@link”
-QrcodeLabelCall: Ligue para |@shortlink|
-QrcodeLabelGeo: Visite |@shortlink|
-QrcodeLabelEvent: Acrescente ao calendário |@shortlink|
-QrcodeLabelEmail: Envie um e-mail a |@shortlink|
-QrcodeLabelWifi: Conecte-se a @shortlink (senha: @link)
+QrcodeLabelUrl: Visite |@text|
+QrcodeLabelCard: Acrescente aos contatos |@text|
+QrcodeLabelSms: Envie a @text uma mensagem “@link”
+QrcodeLabelCall: Ligue para |@text|
+QrcodeLabelGeo: Visite |@text|
+QrcodeLabelEvent: Acrescente ao calendário |@text|
+QrcodeLabelEmail: Envie um e-mail a |@text|
+QrcodeLabelWifi: Conecte-se a @text (senha: @link)

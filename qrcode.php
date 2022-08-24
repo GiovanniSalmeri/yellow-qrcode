@@ -102,7 +102,7 @@ class YellowQrcode {
             if (preg_match('@^(.*)\|(\S(?:.*?\S)?)\|(.*)$@', $formattedLabel, $matches)) {
                 $formattedLabel = $matches[1]."<a href=\"".htmlspecialchars($link)."\">".$matches[2]."</a>".$matches[3];
             }
-            $formattedLabel = str_replace([ "@shortlink", "@link" ], [ htmlspecialchars($shortLink), htmlspecialchars($link) ], $formattedLabel);
+            $formattedLabel = str_replace([ "@text", "@link" ], [ htmlspecialchars($shortLink), htmlspecialchars($link) ], $formattedLabel);
             if (empty($size)) $size = $this->yellow->system->get("qrcodeSize");
             if (!file_exists($path.".png")) {
                 $qrcodeImage = file_get_contents("https://api.qrserver.com/v1/create-qr-code/?color=".rawurlencode($color)."&bgcolor=".rawurlencode($background)."&data=".rawurlencode($content)."&qzone=2&margin=0&size=500x500&ecc=L&format=png");
