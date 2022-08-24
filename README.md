@@ -62,7 +62,7 @@ The following settings can be configured in file `system/extensions/yellow-syste
 `QrcodeSize` (default: `150`) = default width and height in pixels  
 `QrcodeColor` (default: `000000`) = RGB color  
 `QrcodeBackground` (default: `FFFFFF`) = RGB background color  
-`QrcodeShortLinkLength` (default: `30`) = maximum number of characters of @shortlink in labels  
+`QrcodeTextLength` (default: `30`) = maximum number of characters of @text in labels  
 `QrcodeCache` (default: `qrcodes/`) = directory where codes are stored  
 
 ## Installation

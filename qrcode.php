@@ -11,7 +11,7 @@ class YellowQrcode {
         $this->yellow->system->setDefault("qrcodeSize", "150");
         $this->yellow->system->setDefault("qrcodeColor", "000000");
         $this->yellow->system->setDefault("qrcodeBackground", "FFFFFF");
-        $this->yellow->system->setDefault("qrcodeShortLinkLength", "30");
+        $this->yellow->system->setDefault("qrcodeTextLength", "30");
         $this->yellow->system->setDefault("qrcodeCache", "qrcodes/");
     }
 
@@ -46,47 +46,46 @@ class YellowQrcode {
                 }
                 $content = $link;
                 $address = preg_replace('@^https?://@', "", $parts[0]);
-                $maxLength = $this->yellow->system->get("qrcodeShortLinkLength");
-                $shortLink = mb_strlen($address )<=$maxLength ? $address  : mb_substr($address, 0, $maxLength-1)."…";
+                $maxLength = $this->yellow->system->get("qrcodeTextLength");
+                $shortText = mb_strlen($address )<=$maxLength ? $address  : mb_substr($address, 0, $maxLength-1)."…";
             } elseif ($kind=="card" || $kind=="event") {
                 if ($kind=="card") {
                     $contentExtension = "vcf";
-                    $content = "BEGIN:VCARD\r\n";
-                    foreach ([ "N", "TEL", "EMAIL", "ADR" ] as $i=>$tag) {
-                        if (!empty($parts[$i])) $content .= $tag.":".str_replace([ '\\', ',' ], [ '\\\\', '\,' ], trim($parts[$i]))."\r\n";
-                    }
-                    $content .= "END:VCARD\r\n";
+                    $id = "VCARD";
+                    $tags = [ "N", "TEL", "EMAIL", "ADR" ];
                     $nameParts = explode(";", $parts[0]);
                     if (count($nameParts)>=2) {
-                        $shortLink = trim($nameParts[1])." ".trim($nameParts[0]);
+                        $shortText = trim($nameParts[1])." ".trim($nameParts[0]);
                     } else {
-                        $shortLink = trim($nameParts[0]);
+                        $shortText = trim($nameParts[0]);
                     }
                 } else {
                     $contentExtension = "ical";
-                    $content = "BEGIN:VEVENT\r\n";
-                    foreach ([ "SUMMARY", "LOCATION", "DTSTART", "DTEND" ] as $i=>$tag) {
-                        if (!empty($parts[$i])) $content .= $tag.":".str_replace([ '\\', ',' ], [ '\\\\', '\,' ], trim($parts[$i]))."\r\n";
-                    }
-                    $content .= "END:VEVENT\r\n";
-                    $shortLink = $parts[0];
+                    $id = "VEVENT";
+                    $tags = [ "SUMMARY", "LOCATION", "DTSTART", "DTEND" ];
+                    $shortText = $parts[0];
                 }
+                $content = "BEGIN:".$id."\r\n";
+                foreach ($tags as $i=>$tag) {
+                    if (!empty($parts[$i])) $content .= $tag.":".str_replace([ '\\', ',' ], [ '\\\\', '\,' ], trim($parts[$i]))."\r\n";
+                }
+                $content .= "END:".$id."\r\n";
                 if (!file_exists($path.".".$contentExtension)) {
                     $this->yellow->toolbox->createFile($path.".".$contentExtension, $content, true);
                 }
                 $link = $location.".".$contentExtension;
             } elseif ($kind=="sms") {
                 $link = $parts[1];
-                $shortLink = $parts[0];
+                $shortText = $parts[0];
                 $parts = array_map(function($p) { return str_replace([ '\\', ':', ';' ], [ '\\\\', '\:', '\;' ], $p); }, $parts);
                 $content = "SMSTO:".$parts[0].":".$parts[1];
             } elseif ($kind=="wifi") {
                 $link = $parts[2];
-                $shortLink = $parts[0];
+                $shortText = $parts[0];
                 $parts = array_map(function($p) { return str_replace([ '\\', ':', ';' ], [ '\\\\', '\:', '\;' ], $p); }, $parts);
                 $content = "WIFI:T:".$parts[1].";S:".$parts[0].";P:".$parts[2].";;";
             } elseif ($kind=="email") {
-                $shortLink = $parts[0];
+                $shortText = $parts[0];
                 $content = "mailto:".rawurlencode($parts[0]);
                 if ($parts[1]) {
                     $content .= "?subject=".rawurlencode($parts[1]);
@@ -96,13 +95,13 @@ class YellowQrcode {
                 }
                 $link = $content;
             } else {
-                $link = $shortLink = null;
+                $link = $shortText = null;
             }
             $formattedLabel = $label;
             if (preg_match('@^(.*)\|(\S(?:.*?\S)?)\|(.*)$@', $formattedLabel, $matches)) {
                 $formattedLabel = $matches[1]."<a href=\"".htmlspecialchars($link)."\">".$matches[2]."</a>".$matches[3];
             }
-            $formattedLabel = str_replace([ "@text", "@link" ], [ htmlspecialchars($shortLink), htmlspecialchars($link) ], $formattedLabel);
+            $formattedLabel = str_replace([ "@text", "@link" ], [ htmlspecialchars($shortText), htmlspecialchars($link) ], $formattedLabel);
             if (empty($size)) $size = $this->yellow->system->get("qrcodeSize");
             if (!file_exists($path.".png")) {
                 $qrcodeImage = file_get_contents("https://api.qrserver.com/v1/create-qr-code/?color=".rawurlencode($color)."&bgcolor=".rawurlencode($background)."&data=".rawurlencode($content)."&qzone=2&margin=0&size=500x500&ecc=L&format=png");
