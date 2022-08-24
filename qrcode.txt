@@ -35,7 +35,7 @@ QrcodeLabelWifi: Connect to @text (password: @link)
 
 Language: es
 QrcodeLabelUrl: Visitar |@text|
-QrcodeLabelSelf: Mira en tu teléfono
+QrcodeLabelSelf: Mirar en el teléfono
 QrcodeLabelCard: Añadir a los contactos |@text|
 QrcodeLabelSms: Enviar a @text “@link”
 QrcodeLabelCall: Llamar al |@text|
@@ -46,7 +46,7 @@ QrcodeLabelWifi: Conectarse a @text (contraseña: @link)
 
 Language: fr
 QrcodeLabelUrl: Visitez |@text|
-QrcodeLabelSelf: Regarde dans le téléphone
+QrcodeLabelSelf: Regardez dans le téléphone
 QrcodeLabelCard: Ajoutez aux contacts |@text|
 QrcodeLabelSms: Envoyez a @text le SMS « @link »
 QrcodeLabelCall: Appelez le |@text|
