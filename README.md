@@ -6,7 +6,7 @@ QR codes.
 
 ## How to add a QR code
 
-Create a `[qrcode]` shortcut, alone in a paragraph.
+Create a `[qrcode]` shortcut.
 
 The following arguments are available, all are optional:
  
