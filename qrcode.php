@@ -21,7 +21,7 @@ class YellowQrcode {
         if ($name=="qrcode" && ($type=="block" || $type=="inline")) {
             list($content, $label, $style, $size) = $this->yellow->toolbox->getTextArguments($text);
             if (!strlen($content)) {
-                $kind = "url";
+                $kind = "self";
                 $parts = [ $this->yellow->page->getUrl() ];
             } elseif ($content[0]=="#") {
                 $parts = $this->yellow->toolbox->getTextList($content, "|", 5);
@@ -36,7 +36,7 @@ class YellowQrcode {
             $fileName = $this->yellow->system->get("qrcodeCache").md5(rawurlencode($content)."@".$color."@".$background);
             $location = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreMediaLocation").$fileName;
             $path = $this->yellow->lookup->findMediaDirectory("coreMediaLocation").$fileName;
-            if ($kind=="url" || $kind=="geo" || $kind=="call") {
+            if ($kind=="url" || $kind=="geo" || $kind=="self" || $kind=="call") {
                 if ($kind=="geo") {
                     $link = "geo:".$parts[0];
                 } elseif ($kind=="call") {

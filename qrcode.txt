@@ -2,6 +2,7 @@
 
 Language: it
 QrcodeLabelUrl: Visita |@text|
+QrcodeLabelSelf: Guarda nel telefono
 QrcodeLabelCard: Aggiungi alla rubrica |@text|
 QrcodeLabelSms: Scrivi a @text «@link»
 QrcodeLabelCall: Chiama il |@text|
@@ -12,6 +13,7 @@ QrcodeLabelWifi: Collegati a @text (password: @link)
 
 Language: de
 QrcodeLabelUrl: Besuch |@text|
+QrcodeLabelSelf: Siehe in deinem Handy
 QrcodeLabelCard: Füge zu Kontakten |@text| hinzu 
 QrcodeLabelSms: Sende die SMS »@link« an @text
 QrcodeLabelCall: Ruf |@text| an
@@ -22,6 +24,7 @@ QrcodeLabelWifi: Verbinde mit @text (Passwort: @link)
 
 Language: en
 QrcodeLabelUrl: Visit |@text|
+QrcodeLabelSelf: See in your phone
 QrcodeLabelCard: Add to contacts |@text|
 QrcodeLabelSms: Message @text ‘@link’
 QrcodeLabelCall: Call |@text|
@@ -32,6 +35,7 @@ QrcodeLabelWifi: Connect to @text (password: @link)
 
 Language: es
 QrcodeLabelUrl: Visitar |@text|
+QrcodeLabelSelf: Mira en tu teléfono
 QrcodeLabelCard: Añadir a los contactos |@text|
 QrcodeLabelSms: Enviar a @text “@link”
 QrcodeLabelCall: Llamar al |@text|
@@ -42,6 +46,7 @@ QrcodeLabelWifi: Conectarse a @text (contraseña: @link)
 
 Language: fr
 QrcodeLabelUrl: Visitez |@text|
+QrcodeLabelSelf: Regarde dans le téléphone
 QrcodeLabelCard: Ajoutez aux contacts |@text|
 QrcodeLabelSms: Envoyez a @text le SMS « @link »
 QrcodeLabelCall: Appelez le |@text|
@@ -52,6 +57,7 @@ QrcodeLabelWifi: Connectez-vous à @text (mot de passe: @link)
 
 Language: nl
 QrcodeLabelUrl: Bezoek |@text|
+QrcodeLabelSelf: Kijk in je telefoon
 QrcodeLabelCard: Voeg toe aan contacten |@text|
 QrcodeLabelSms: Stuur @text de SMS „@link”
 QrcodeLabelCall: Bel |@text|
@@ -62,6 +68,7 @@ QrcodeLabelWifi: Maak verbinding met @text (wachtwoord: @link)
 
 Language: pt
 QrcodeLabelUrl: Visite |@text|
+QrcodeLabelSelf: Veja no telefone
 QrcodeLabelCard: Acrescente aos contatos |@text|
 QrcodeLabelSms: Envie a @text uma mensagem “@link”
 QrcodeLabelCall: Ligue para |@text|
