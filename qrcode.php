@@ -44,7 +44,7 @@ class YellowQrcode {
                     $link = $parts[0];
                 }
                 $content = $link;
-                $address = preg_replace('@^https?://@', "", $parts[0]);
+                $address = preg_replace('@^https?://@i', "", $parts[0]);
                 $shortText = $address;
             } elseif ($kind=="card" || $kind=="event") {
                 if ($kind=="card") {
