@@ -12,6 +12,12 @@ figure.qrcode {
 }
 figure.qrcode figcaption {
     font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+figure.qrcode figcaption a {
+    white-space: nowrap;
 }
 
 /* Responsiveness */

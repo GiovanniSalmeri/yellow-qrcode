@@ -11,7 +11,6 @@ class YellowQrcode {
         $this->yellow->system->setDefault("qrcodeSize", "150");
         $this->yellow->system->setDefault("qrcodeColor", "000000");
         $this->yellow->system->setDefault("qrcodeBackground", "FFFFFF");
-        $this->yellow->system->setDefault("qrcodeTextLength", "30");
         $this->yellow->system->setDefault("qrcodeCache", "qrcodes/");
     }
 
@@ -45,9 +44,8 @@ class YellowQrcode {
                     $link = $parts[0];
                 }
                 $content = $link;
-                $address = preg_replace('@^https?://@i', "", $parts[0]);
-                $maxLength = $this->yellow->system->get("qrcodeTextLength");
-                $shortText = mb_strlen($address )<=$maxLength ? $address  : mb_substr($address, 0, $maxLength-1)."…";
+                $address = preg_replace('@^https?://@', "", $parts[0]);
+                $shortText = $address;
             } elseif ($kind=="card" || $kind=="event") {
                 if ($kind=="card") {
                     $contentExtension = "vcf";
