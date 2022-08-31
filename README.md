@@ -21,7 +21,7 @@ The following arguments are available, all are optional:
     #geo|longitude,latitude
     #call|telephone-number
     #email|to|subject|body
-    #sms|to|text
+    #sms|telephone-number|text
     #card|surname;name|telephone-number|email|;;street-address;locality;region;postal-code;country
     #event|summary|location|start-time|end-time
     #wifi|ssid|security|password
