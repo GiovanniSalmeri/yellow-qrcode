@@ -66,7 +66,7 @@ The following settings can be configured in file `system/extensions/yellow-syste
 
 ## Installation
 
-[Download extension](https://github.com/GiovanniSalmeri/yellow-qrcode/archive/master.zip) and copy zip file into your `system/extensions` folder. Right click if you use Safari.
+[Download extension](https://github.com/GiovanniSalmeri/yellow-qrcode/archive/main.zip) and copy zip file into your `system/extensions` folder. Right click if you use Safari.
 
 This extension uses [QR Code Generator](https://goqr.me/api/). The service provider [does not store or log QR code contents](https://goqr.me/privacy-safety-security/). "QR Code" is a trademark of Denso Wave Inc.
 
