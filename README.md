@@ -72,4 +72,4 @@ This extension uses [QR Code Generator](https://goqr.me/api/). The service provi
 
 ## Developer
 
-Giovanni Salmeri. [Get help](https://github.com/GiovanniSalmeri/yellow-qrcode/issues).
+Giovanni Salmeri. [Get help](https://datenstrom.se/yellow/help/)
