@@ -4,6 +4,10 @@ QR codes.
 
 <p align="center"><img src="qrcode-screenshot.png?raw=true" alt="Screenshot"></p>
 
+## How to install an extension
+
+[Download ZIP file](https://github.com/GiovanniSalmeri/yellow-qrcode/archive/main.zip) and copy it into your `system/extensions` folder. [Learn more about extensions](https://github.com/annaesvensson/yellow-update).
+
 ## How to add a QR code
 
 Create a `[qrcode]` shortcut.
@@ -64,12 +68,10 @@ The following settings can be configured in file `system/extensions/yellow-syste
 `QrcodeBackground` (default: `FFFFFF`) = RGB background color  
 `QrcodeCache` (default: `qrcodes/`) = directory where codes are stored  
 
-## Installation
+## Acknowledgements
 
-[Download extension](https://github.com/GiovanniSalmeri/yellow-qrcode/archive/main.zip) and copy zip file into your `system/extensions` folder. Right click if you use Safari.
-
-This extension uses [QR Code Generator](https://goqr.me/api/). The service provider [does not store or log QR code contents](https://goqr.me/privacy-safety-security/). "QR Code" is a trademark of Denso Wave Inc.
+This extension uses [QR Code Generator](https://goqr.me/api/). The service provider [does not store or log QR code contents](https://goqr.me/privacy-safety-security/). Thank you for the free service. "QR Code" is a trademark of Denso Wave Inc.
 
 ## Developer
 
-Giovanni Salmeri. [Get help](https://datenstrom.se/yellow/help/)
+Giovanni Salmeri. [Get help](https://datenstrom.se/yellow/help/).
