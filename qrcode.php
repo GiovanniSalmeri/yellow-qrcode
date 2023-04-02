@@ -29,7 +29,7 @@ class YellowQrcode {
                 $kind = "url";
                 $parts = [ $content ];
             }
-            if (empty($label)) $label = $this->yellow->language->getTextHtml("qrcodeLabel".ucfirst($kind));
+            if (is_string_empty($label)) $label = $this->yellow->language->getTextHtml("qrcodeLabel".ucfirst($kind));
             $color = $this->yellow->system->get("qrcodeColor");
             $background = $this->yellow->system->get("qrcodeBackground");
             $fileName = $this->yellow->system->get("qrcodeCache").md5(rawurlencode($content)."@".$color."@".$background);
@@ -65,7 +65,7 @@ class YellowQrcode {
                 }
                 $content = "BEGIN:".$id."\r\n";
                 foreach ($tags as $i=>$tag) {
-                    if (!empty($parts[$i])) $content .= $tag.":".str_replace([ '\\', ',' ], [ '\\\\', '\,' ], trim($parts[$i]))."\r\n";
+                    if (!is_string_empty($parts[$i])) $content .= $tag.":".str_replace([ '\\', ',' ], [ '\\\\', '\,' ], trim($parts[$i]))."\r\n";
                 }
                 $content .= "END:".$id."\r\n";
                 if (!file_exists($path.".".$contentExtension)) {
@@ -100,13 +100,13 @@ class YellowQrcode {
                 $formattedLabel = $matches[1]."<a href=\"".htmlspecialchars($link)."\">".$matches[2]."</a>".$matches[3];
             }
             $formattedLabel = str_replace([ "@text", "@link" ], [ htmlspecialchars($shortText), htmlspecialchars($link) ], $formattedLabel);
-            if (empty($size)) $size = $this->yellow->system->get("qrcodeSize");
+            if (is_string_empty($size)) $size = $this->yellow->system->get("qrcodeSize");
             if (!file_exists($path.".png")) {
                 $qrcodeImage = file_get_contents("https://api.qrserver.com/v1/create-qr-code/?color=".rawurlencode($color)."&bgcolor=".rawurlencode($background)."&data=".rawurlencode($content)."&qzone=2&margin=0&size=500x500&ecc=L&format=png");
                 if (substr($qrcodeImage, 0, 8)=="\211PNG\r\n\032\n") $this->yellow->toolbox->createFile($path.".png", $qrcodeImage, true);
             }
             $output .= "<figure class=\"qrcode";
-            if (!empty($style)) $output .= " ".htmlspecialchars($style);
+            if (!is_string_empty($style)) $output .= " ".htmlspecialchars($style);
             $output .= "\">\n";
             $output .= "<img alt=\"QR code\" width=\"".htmlspecialchars($size)."\" height=\"".htmlspecialchars($size)."\" aria-hidden=\"true\" src=\"".$location.".png"."\" />\n";
             $output .= "<figcaption>".$formattedLabel."</figcaption>\n";
