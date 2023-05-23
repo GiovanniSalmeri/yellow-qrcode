@@ -63,10 +63,10 @@ Adding different kinds of QR codes:
 
 The following settings can be configured in file `system/extensions/yellow-system.ini`:
 
-`QrcodeSize` (default: `150`) = default width and height in pixels  
-`QrcodeColor` (default: `000000`) = RGB color  
-`QrcodeBackground` (default: `FFFFFF`) = RGB background color  
-`QrcodeCache` (default: `qrcodes/`) = directory where codes are stored  
+`QrcodeSize` = default width and height in pixels  
+`QrcodeColor` = RGB color  
+`QrcodeBackground` = RGB background color  
+`QrcodeCache` = directory where codes are stored  
 
 ## Acknowledgements
 
