@@ -91,7 +91,7 @@ class YellowQrcode {
         $output = null;
         if ($name=="qrcode" && ($type=="block" || $type=="inline")) {
             list($content, $label, $style, $size) = $this->yellow->toolbox->getTextArguments($text);
-            if (!strlen($content)) {
+            if (is_string_empty($content)) {
                 $kind = "self";
                 $parts = [ $this->yellow->page->getUrl() ];
             } elseif ($content[0]=="#") {
