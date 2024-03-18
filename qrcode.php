@@ -12,7 +12,7 @@ class YellowQrcode {
         $this->yellow->system->setDefault("qrcodeColor", "000000");
         $this->yellow->system->setDefault("qrcodeBackground", "FFFFFF");
         $this->yellow->system->setDefault("qrcodeCache", "qrcodes/");
-        $this->yellow->language->setDefaults([
+        $this->yellow->language->setDefaults(array(
             "Language: it",
             "QrcodeLabelUrl: Visita |@text|",
             "QrcodeLabelSelf: Guarda nel telefono",
@@ -83,7 +83,7 @@ class YellowQrcode {
             "QrcodeLabelEvent: Acrescente ao calendário |@text|",
             "QrcodeLabelEmail: Envie um e-mail a |@text|",
             "QrcodeLabelWifi: Conecte-se a @text (senha: @link)",
-        ]);
+        ));
     }
 
     // Handle page content of shortcut
