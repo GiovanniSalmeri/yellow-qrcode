@@ -1,5 +1,5 @@
-Qrcode 0.8.20
-=============
+# Qrcode 0.9.1
+
 QR codes.
 
 <p align="center"><img src="SCREENSHOT.png" alt="Screenshot"></p>

@@ -2,7 +2,7 @@
 // Qrcode extension, https://github.com/GiovanniSalmeri/yellow-qrcode
 
 class YellowQrcode {
-    const VERSION = "0.8.20";
+    const VERSION = "0.9.1";
     public $yellow;         // access to API
 
     // Handle initialisation
@@ -87,13 +87,13 @@ class YellowQrcode {
     }
 
     // Handle page content of shortcut
-    public function onParseContentShortcut($page, $name, $text, $type) {
+    public function onParseContentElement($page, $name, $text, $attributes, $type) {
         $output = null;
         if ($name=="qrcode" && ($type=="block" || $type=="inline")) {
             list($content, $label, $style, $size) = $this->yellow->toolbox->getTextArguments($text);
             if (is_string_empty($content)) {
                 $kind = "self";
-                $parts = [ $this->yellow->page->getUrl() ];
+                $parts = [ $this->yellow->page->getUrl(true) ];
             } elseif ($content[0]=="#") {
                 $parts = $this->yellow->toolbox->getTextList($content, "|", 5);
                 $kind = substr(array_shift($parts), 1);
@@ -141,7 +141,7 @@ class YellowQrcode {
                 }
                 $content .= "END:".$id."\r\n";
                 if (!file_exists($path.".".$contentExtension)) {
-                    $this->yellow->toolbox->createFile($path.".".$contentExtension, $content, true);
+                    $this->yellow->toolbox->writeFile($path.".".$contentExtension, $content, true);
                 }
                 $link = $location.".".$contentExtension;
             } elseif ($kind=="sms") {
@@ -175,7 +175,7 @@ class YellowQrcode {
             if (is_string_empty($size)) $size = $this->yellow->system->get("qrcodeSize");
             if (!file_exists($path.".png")) {
                 $qrcodeImage = file_get_contents("https://api.qrserver.com/v1/create-qr-code/?color=".rawurlencode($color)."&bgcolor=".rawurlencode($background)."&data=".rawurlencode($content)."&qzone=2&margin=0&size=500x500&ecc=L&format=png");
-                if (substr($qrcodeImage, 0, 8)=="\211PNG\r\n\032\n") $this->yellow->toolbox->createFile($path.".png", $qrcodeImage, true);
+                if (substr($qrcodeImage, 0, 8)=="\211PNG\r\n\032\n") $this->yellow->toolbox->writeFile($path.".png", $qrcodeImage, true);
             }
             $output .= "<figure class=\"qrcode";
             if (!is_string_empty($style)) $output .= " ".htmlspecialchars($style);
@@ -191,8 +191,8 @@ class YellowQrcode {
     public function onParsePageExtra($page, $name) {
         $output = null;
         if ($name=="header") {
-            $extensionLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreExtensionLocation");
-            $output = "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$extensionLocation}qrcode.css\" />\n";
+            $assetLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreAssetLocation");
+            $output = "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$assetLocation}qrcode.css\" />\n";
         }
         return $output;
     }
