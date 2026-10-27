@@ -1,4 +1,4 @@
-# Qrcode 0.9.1
+# Qrcode 0.9.2
 
 QR codes.
 
@@ -64,13 +64,13 @@ Adding different kinds of QR codes:
 The following settings can be configured in file `system/extensions/yellow-system.ini`:
 
 `QrcodeSize` = default width and height in pixels  
-`QrcodeColor` = RGB color  
+`QrcodeColor` = RGB color, e.g. `00FA0A`  
 `QrcodeBackground` = RGB background color  
 `QrcodeCache` = directory where codes are stored  
 
 ## Acknowledgements
 
-This extension uses [QR Code Generator](https://goqr.me/api/). The service provider [does not store or log QR code contents](https://goqr.me/privacy-safety-security/). Thank you for the free service. "QR Code" is a trademark of Denso Wave Inc.
+This extension includes a stripped-down version of [barcode.php](https://github.com/kreativekorp/barcode) by Kreative Software. Thank you for the good work. "QR Code" is a trademark of Denso Wave Inc.
 
 ## Developer
 
