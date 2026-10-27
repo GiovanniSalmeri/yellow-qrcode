@@ -1,8 +1,8 @@
-# Qrcode 0.9.2
+# Qrcode 1.0.0
 
-QR codes.
+QR codes. Developed by Giovanni Salmeri.
 
-<p align="center"><img src="SCREENSHOT.png" alt="Screenshot"></p>
+<p align="center"><img src="screenshot.png" alt="Screenshot"></p>
 
 ## How to install an extension
 
@@ -70,8 +70,6 @@ The following settings can be configured in file `system/extensions/yellow-syste
 
 ## Acknowledgements
 
-This extension includes a stripped-down version of [barcode.php](https://github.com/kreativekorp/barcode) by Kreative Software. Thank you for the good work. "QR Code" is a trademark of Denso Wave Inc.
+This extension includes a stripped-down version of [barcode.php](https://github.com/kreativekorp/barcode) by Kreative Software. Thank you for the useful library. "QR Code" is a trademark of Denso Wave Inc.
 
-## Developer
-
-Giovanni Salmeri. [Get help](https://datenstrom.se/yellow/help/).
+Do you have questions? [Get help](https://datenstrom.se/yellow/help/).

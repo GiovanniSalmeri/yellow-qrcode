@@ -2,7 +2,7 @@
 // Qrcode extension, https://github.com/GiovanniSalmeri/yellow-qrcode
 
 class YellowQrcode {
-    const VERSION = "0.9.1";
+    const VERSION = "1.0.0";
     public $yellow;         // access to API
 
     // Handle initialisation
@@ -203,7 +203,7 @@ class YellowQrcode {
         $output = null;
         if ($name=="header") {
             $assetLocation = $this->yellow->system->get("coreServerBase").$this->yellow->system->get("coreAssetLocation");
-            $output = "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"{$assetLocation}qrcode.css\" />\n";
+            $output = "<link rel=\"stylesheet\" media=\"all\" href=\"{$assetLocation}qrcode.css\" />\n";
         }
         return $output;
     }
